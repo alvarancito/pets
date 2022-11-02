@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+			<title>PetAlRescate</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+		<link rel="stylesheet" href="styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+
+	</head>
+	<body>
+		<header>
+			<h1>PetAlRescate</h1>
+		</header>
+		<div class="container">
+		
+		<nav class="nav-main">
+			<img src="D:\USUARIO\xampp/Calle/logo.jpeg">
+			<ul class="nav-menu">
+				<li>
+					<a href="#">Principal</a>
+				</li>
+				<li>
+					<a href="#">Contacto</a>
+				</li>
+				<li>
+					<a href="#">Ayuda</a>
+				</li>
+			</ul>
+			<ul class="mav-menu-right">
+				<li>
+					<a href="#">
+						<i class="fas fa-search"></i>
+					</a>
+				</li>
+		</nav>
+		</div>
+			<div class="col-md-6">
+	<form action="insertar_usuario.php" method="POST"><br>
+		<center>
+			<label class="form-control">Tipo de animal</label>
+			<input type="text" name="Tipo animal" placeholder="tipo animal" required><br><br>
+
+			<label class="form-control">Escriba el nombre de su mascota</label>
+			<input type="text" name="Nombre mascota" placeholder="nombre" required><br><br>
+
+			<label class="form-control">Escriba la raza de su mascota</label>
+			<input type="text" name="Raza" placeholder="raza" required><br><br>
+
+			<label class="form-control">Edad de su mascota</label>
+			<input type="number" name="Edad" placeholder="edad" required><br><br>
+
+			<label class="form-control">Sector</label>
+			<input type="text" name="Sector" placeholder="Sector" required><br><br>
+
+
+			<button type="submit" name="ingresar">Registrarse</button>
+		</center>
+	</form>
+</div>
+<?php
+include('principal.php');
+	if (isset($_POST['ingresar'])) {
+		$nomb=$_POST['nombre'];
+		$raza=$_POST['raza'];
+		$edad=$_POST['edad'];
+		$sector=$_POST['sector'];
+		$tipoanimal=$_POST['tipo animal'];
+		
+
+		$insertar= "INSERT INTO usuario(NOMBRE, RAZA, EDAD, SECTOR, TIPOAN) VALUES ('$nomb','$raza','$edad','$sector','$tipoanimal')";
+
+
+		$ejecutar=mysqli_query($con,$insertar);
+		if($ejecutar){
+
+			echo "Ingreso exitoso";
+		}
+		
+
+
+	}
+
+				
+	</body>
+</html>
